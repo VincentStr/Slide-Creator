@@ -1,0 +1,57 @@
+
+.grid-containerPage {
+
+    margin: 0 auto;
+    height:auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    background-color: rgba(63, 62, 62, 0.085);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  
+    
+    }
+    .grid-itemPage {
+      background: white;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: rgb(56, 56, 56);
+      position: relative;
+      transition: all .1s ease-in;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: rgb(226, 226, 226);
+      border-radius: 10px;
+      padding: 10px;
+      backdrop-filter: saturate(180%) blur(20px);
+      background-color: rgba(190, 190, 190, 0.5);
+    }
+    .grid-itemPage input{
+        border-radius: 3px;
+        border-style: none;
+        margin: 2px;
+        max-width: 400px;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+ 
+    }
+    .grid-itemPage h1{
+        color:rgb(92, 92, 92)
+    }
+    .cBtn{
+        font-size: 2rem;
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        padding: 5px;
+        color: rgb(48, 47, 45);
+        margin: 0.1%;
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255,255,255,0.5);
+        }
+    .menu{
+        margin: 19px;
+    }
