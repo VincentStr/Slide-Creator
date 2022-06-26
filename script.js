@@ -1,8 +1,45 @@
 let pageCoutner = 0;
-
+let hasSetup = false;
 let container = document.createElement("div")
 
+const startSetup = () =>{
+  hasSetup = false;
+  setupFunc()
+  removePopup()
+   }
+
+const removePopup = () =>{
+  const removePop = document.getElementById("popupContainer")
+  document.getElementById("main").removeChild(removePop)
+}
+
 const setupFunc = () =>{
+  if(hasSetup == true){
+   const main = document.getElementById("main")
+   const popupContainer = document.createElement("div")
+   popupContainer.setAttribute("id", "popupContainer")
+   const popup = document.createElement("div")
+   popup.innerHTML ="Using setup again will delete all current inputs. <br> Would you like to proceed?"
+   popup.setAttribute("id", "popup")
+   
+   const yBtn = document.createElement("button")
+   yBtn.setAttribute("onclick", "startSetup()")
+   yBtn.innerHTML = "Yes"
+
+   const nBtn = document.createElement("button")
+   nBtn.setAttribute("onclick", "removePopup()")
+   nBtn.innerHTML = "No"
+
+
+   popup.appendChild(yBtn)
+   popup.appendChild(nBtn)
+
+   popupContainer.appendChild(popup)
+   main.appendChild(popupContainer)
+    return;
+  }
+
+  hasSetup = true;
   pageCoutner = 0;
   document.getElementById("inputField").innerHTML = "";
   const numPage = document.getElementById("numPage").value;
@@ -36,7 +73,6 @@ const createItem = () =>{
 
   divItem.append(itemNum,inputURL,inputALT)
   document.getElementById("inputField").append(divItem)
-
 }
 
 const removePage = () =>{
