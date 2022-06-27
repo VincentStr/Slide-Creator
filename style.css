@@ -112,3 +112,13 @@ html{
         grid-template-columns: 1fr 1fr;
     }
   }
+
+  @media only screen and (max-width: 500px) {
+    .grid-containerPage {
+        grid-template-columns: 1fr;
+    }
+    .cBtn {
+        width: 100%;
+        margin: 2px;
+    }
+  }
