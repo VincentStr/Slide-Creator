@@ -1,4 +1,4 @@
-html{
+html {
     background-color: rgb(171, 171, 171);
 }
 
@@ -17,17 +17,28 @@ html{
 
 }
 
+.itemImage {
+    min-width: 4rem;
+    min-height: 3rem;
+    max-width: 8rem;
+    max-height: 6rem;
+    background-color: rgba(174, 174, 174, 0.12);
+    box-shadow: rgba(36, 33, 52, 0.15) 0px 48px 100px 0px;
+    border-radius: 8px;
+    margin: 0 auto;
+    grid-column: 5/7;
+}
+
 .grid-itemPage {
     max-height: 100%;
     background: white;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
     color: rgb(56, 56, 56);
     position: relative;
     transition: all .1s ease-in;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(226, 226, 226);
     border-radius: 10px;
     padding: 10px;
     backdrop-filter: saturate(180%) blur(20px);
@@ -44,8 +55,33 @@ html{
 
 }
 
+.grid-itemInputs {
+   
+    display: flex;
+    flex-direction: column;
+    color: rgb(56, 56, 56);
+    position: relative;
+    transition: all .1s ease-in;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+   
+    grid-column: 2/5;
+}
+
 .grid-itemPage h1 {
     color: rgb(92, 92, 92)
+}
+
+.grid-itemPage h2 {
+    max-width: 30px;
+    background-color: rgba(224, 224, 224, 0.743);
+    max-height: 30px;
+    border-radius: 15px;
+    padding: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .cBtn {
@@ -53,7 +89,7 @@ html{
     border-radius: 10px;
     border-style: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding: 5px;
+    padding: 8px;
     color: rgb(48, 47, 45);
     margin: 0.1%;
     backdrop-filter: saturate(180%) blur(20px);
@@ -66,13 +102,12 @@ html{
     backdrop-filter: saturate(180%) blur(20px);
     background-color: rgba(104, 104, 104, 0.8);
     border-radius: 16px;
-
-   
+    display: flex;
+    flex: auto;
+    flex-wrap: wrap;
 }
 
 #popup {
-
-    background-color: rgb(65, 65, 65);
     position: absolute;
     top: 10%;
     margin-left: 40%;
@@ -104,21 +139,44 @@ html{
     height: 100%;
     backdrop-filter: saturate(180%) blur(5px);
     background-color: rgba(20, 20, 20, 0.084);
-
+}
+.aBtn{
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 15px;
+    color: rgb(48, 47, 45);
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#autoFill{
+    padding: 8px;
+}
+#aContainer{
+    padding:0px;
+    max-width: 800px;
+}
+@media only screen and (max-width: 1550px) {
+    .grid-containerPage {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
-@media only screen and (max-width: 833px) {
+
+@media only screen and (max-width: 1233px) {
     .grid-containerPage {
         grid-template-columns: 1fr 1fr;
     }
-  }
+}
 
-  @media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
     .grid-containerPage {
         grid-template-columns: 1fr;
     }
+
     .cBtn {
         width: 100%;
         margin: 2px;
     }
-  }
+}

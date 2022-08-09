@@ -2,40 +2,40 @@ let pageCoutner = 0;
 let hasSetup = false;
 let container = document.createElement("div")
 
-const startSetup = () =>{
+const startSetup = () => {
   hasSetup = false;
   setupFunc()
   removePopup()
-   }
+}
 
-const removePopup = () =>{
+const removePopup = () => {
   const removePop = document.getElementById("popupContainer")
   document.getElementById("main").removeChild(removePop)
 }
 
-const setupFunc = () =>{
-  if(hasSetup == true){
-   const main = document.getElementById("main")
-   const popupContainer = document.createElement("div")
-   popupContainer.setAttribute("id", "popupContainer")
-   const popup = document.createElement("div")
-   popup.innerHTML ="Using setup again will delete all current inputs. <br> Would you like to proceed?"
-   popup.setAttribute("id", "popup")
-   
-   const yBtn = document.createElement("button")
-   yBtn.setAttribute("onclick", "startSetup()")
-   yBtn.innerHTML = "Yes"
+const setupFunc = () => {
+  if (hasSetup == true) {
+    const main = document.getElementById("main")
+    const popupContainer = document.createElement("div")
+    popupContainer.setAttribute("id", "popupContainer")
+    const popup = document.createElement("div")
+    popup.innerHTML = "Using setup again will delete all current inputs. <br> Would you like to proceed? <br>"
+    popup.setAttribute("id", "popup")
 
-   const nBtn = document.createElement("button")
-   nBtn.setAttribute("onclick", "removePopup()")
-   nBtn.innerHTML = "No"
+    const yBtn = document.createElement("button")
+    yBtn.setAttribute("onclick", "startSetup()")
+    yBtn.innerHTML = "Yes"
+
+    const nBtn = document.createElement("button")
+    nBtn.setAttribute("onclick", "removePopup()")
+    nBtn.innerHTML = "No"
 
 
-   popup.appendChild(yBtn)
-   popup.appendChild(nBtn)
+    popup.appendChild(yBtn)
+    popup.appendChild(nBtn)
 
-   popupContainer.appendChild(popup)
-   main.appendChild(popupContainer)
+    popupContainer.appendChild(popup)
+    main.appendChild(popupContainer)
     return;
   }
 
@@ -43,15 +43,16 @@ const setupFunc = () =>{
   pageCoutner = 0;
   document.getElementById("inputField").innerHTML = "";
   const numPage = document.getElementById("numPage").value;
-    for(let i = 1; i <= numPage; i++){
-        pageCoutner ++;
-        createItem();
-    }
-    
+  for (let i = 1; i <= numPage; i++) {
+    pageCoutner++;
+    createItem();
+  }
+
   //  document.getElementById("inputField").innerHTML = container
 }
 
-const createItem = () =>{
+
+const createItem = () => {
   const divItem = document.createElement('div')
   divItem.setAttribute("class", "grid-itemPage")
   divItem.setAttribute("id", "itemPage" + pageCoutner)
@@ -59,53 +60,83 @@ const createItem = () =>{
   const itemNum = document.createElement('h2');
   itemNum.innerHTML = pageCoutner
 
- 
   const inputURL = document.createElement('input');
   inputURL.setAttribute("type", "text");
-  inputURL.setAttribute("placeholder", "URL");
-  inputURL.setAttribute("id", "URL" + pageCoutner )
+  inputURL.setAttribute("placeholder", "url");
+  inputURL.setAttribute("id", "URL" + pageCoutner)
 
   const inputALT = document.createElement('input');
   inputALT.setAttribute("type", "text")
-  inputALT.setAttribute("placeholder", "ALT")
+  inputALT.setAttribute("placeholder", "alt")
   inputALT.setAttribute("id", "ALT" + pageCoutner)
 
+  const inputItem = document.createElement('div')
+  inputItem.setAttribute("class", "grid-itemInputs")
 
-  divItem.append(itemNum,inputURL,inputALT)
+  inputItem.append(inputURL, inputALT)
+
+
+  const imageItem = document.createElement('img')
+  imageItem.setAttribute("class", "itemImage")
+  imageItem.setAttribute("id", "img" + pageCoutner)
+
+
+  divItem.append(itemNum, inputItem, imageItem)
   document.getElementById("inputField").append(divItem)
 }
 
-const removePage = () =>{
-  try{
+window.addEventListener("keyup", (event) => {
+  const cUrl = event.target.id
+  if (cUrl.includes("URL")) {
+    let img = document.querySelector("#img" + cUrl.slice(3))
+    img.src = event.target.value + new Date().getTime();
+  }
+});
+
+const removePage = () => {
+  try {
     const removeItem = document.getElementById("itemPage" + pageCoutner)
     document.getElementById("inputField").removeChild(removeItem)
     pageCoutner--;
     document.getElementById("numPage").value = pageCoutner
-  } catch(error){
+  } catch (error) {
     alert("No Item To Remove!")
   }
 }
-const addPage = () =>{
-   pageCoutner++;
-   createItem()
-   document.getElementById("numPage").value = pageCoutner
+const addPage = () => {
+  pageCoutner++;
+  createItem()
+  document.getElementById("numPage").value = pageCoutner
 
 }
-const createFunc = () =>{
-    let pages = ""
-    for(let i = 1; i <= pageCoutner; i++){
-      let alt = document.getElementById("ALT" + i).value
-      let url = document.getElementById("URL" + i).value
+const autoFillFunc =() =>{
+  const pre = document.querySelector("#prefix").value
+  const suf = document.querySelector("#suffix").value
+  
+  for(let i = 1; i <= pageCoutner; i++){
+    document.querySelector("#img" + i).src = (pre + i + suf) + new Date().getTime()
+    document.querySelector("#URL" + i).value = (pre + i + suf)
+    console.log((pre + i + suf))
+  }
 
-      pages += `<div class="mySlides fade">
-      <div class="numbertext">`+i + "/" + pageCoutner + `</div>
-      <img src="`+url +`"  alt=" `+alt +`" style="width: 100%;" />
+
+}
+const createFunc = () => {
+  let pages = ""
+  for (let i = 1; i <= pageCoutner; i++) {
+    let alt = document.getElementById("ALT" + i).value
+    let url = document.getElementById("URL" + i).value
+
+    pages += `<div class="mySlides fade">
+      <div class="numbertext">`+ i + "/" + pageCoutner + `</div>
+      <img src="`+ url + `"  alt=" ` + alt + `" style="width: 100%;" />
       </div>`
 
 
-    }
+  }
+  
 
-    let ins = `<div class="slideshow-container"><!-- Full-width images with number and caption text -->
+  let ins = `<div class="slideshow-container"><!-- Full-width images with number and caption text -->
  
     `+ pages + `
     
@@ -224,6 +255,6 @@ const createFunc = () =>{
       }
     // ]]></script>`
 
-    
-    navigator.clipboard.writeText(ins);
+
+  navigator.clipboard.writeText(ins);
 }
