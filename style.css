@@ -85,7 +85,7 @@ html {
 }
 
 .cBtn {
-    font-size: 2rem;
+    font-size: 1.8rem;
     border-radius: 10px;
     border-style: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -157,9 +157,15 @@ html {
     padding:0px;
     max-width: 800px;
 }
-@media only screen and (max-width: 1550px) {
+@media only screen and (max-width: 1750px) {
     .grid-containerPage {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .aBtn{
+        font-size: 0.9rem;
+    }
+    .cBtn{
+        font-size: 1.4rem;
     }
 }
 

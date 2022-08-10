@@ -109,11 +109,11 @@ const addPage = () => {
   document.getElementById("numPage").value = pageCoutner
 
 }
-const autoFillFunc =() =>{
+const autoFillFunc = () => {
   const pre = document.querySelector("#prefix").value
   const suf = document.querySelector("#suffix").value
-  
-  for(let i = 1; i <= pageCoutner; i++){
+
+  for (let i = 1; i <= pageCoutner; i++) {
     document.querySelector("#img" + i).src = (pre + i + suf) + new Date().getTime()
     document.querySelector("#URL" + i).value = (pre + i + suf)
     console.log((pre + i + suf))
@@ -134,7 +134,7 @@ const createFunc = () => {
 
 
   }
-  
+
 
   let ins = `<div class="slideshow-container"><!-- Full-width images with number and caption text -->
  
